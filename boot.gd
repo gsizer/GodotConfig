@@ -8,5 +8,7 @@ func _ready():
 	settingsWindow.popup()
 
 func _input(event:InputEvent):
-	if(event.is_action("ui_cancel")):
+	if(event.is_action_released("ui_cancel")):
 		$Settings.popup()
+	if(event.is_action_released("ui_home")):
+		$ItemEditor.popup_centered()
