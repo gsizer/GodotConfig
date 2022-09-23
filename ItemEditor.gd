@@ -4,10 +4,10 @@ const dataPath : String = "user://itemData/"
 const fileName : String = "items.txt"
 
 var dataFile : File = File.new()
-var err := NOTIFICATION_READY
+var err
 var data
 
-func ReadData():
+func ReadData()->bool:
 	err = dataFile.open( dataPath + fileName, File.READ_WRITE )
 	match err:
 		ERR_FILE_NOT_FOUND:
@@ -15,8 +15,10 @@ func ReadData():
 			d.make_dir_recursive( dataPath )
 		OK:
 			data = dataFile.get_var( true )
+			return true
 		_:
 			print("ItemEditor Read Error: ", err)
+	return false
 
 func WriteData():
 	err = dataFile.open( dataPath + fileName, File.WRITE_READ )
@@ -27,7 +29,11 @@ func WriteData():
 			print("ItemEditor Read Error: ", err)
 
 func _ready():
-	ReadData()
+	err = NOTIFICATION_READY
+	if( !ReadData() ):
+		ReadData()
+	else:
+		err = OK
 
 func _notification(what):
 	match what:

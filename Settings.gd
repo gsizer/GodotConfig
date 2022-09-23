@@ -17,6 +17,16 @@ func Defaults():
 	config.set_value( "Audio", "Music", 0.0 )
 	config.set_value( "Audio", "Speech", 0.0 )
 	config.set_value( "Audio", "Weather", 0.0 )
+	#	interface
+	config.set_value( "Interface", "Font", "default" )
+	config.set_value( "Interface", "FontSize", 16 )
+	#	Key Bindings
+	config.set_value( "Bindings", "Home", KEY_HOME )
+	config.set_value( "Bindings", "End", KEY_END )
+	config.set_value( "Bindings", "PageUp", KEY_PAGEUP )
+	config.set_value( "Bindings", "PageDown", KEY_PAGEDOWN )
+	config.set_value( "Bindings", "Back", KEY_BACK )
+	config.set_value( "Bindings", "Accept", KEY_ENTER)
 
 ######################################
 #	save configuration to file
